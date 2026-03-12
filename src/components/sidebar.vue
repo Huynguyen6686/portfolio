@@ -1,21 +1,16 @@
 <template>
-  <aside class="sidebar" :class="{ active: isExpanded }" data-sidebar>
-
+  <aside class="sidebar" data-sidebar>
     <div class="sidebar-info">
       <figure class="avatar-box">
-        <img :src="profile.avatar" :alt="profile.name" >
+        <img :src="profile.avatar" :alt="profile.name">
       </figure>
 
       <div class="info-content">
         <h1 class="name" :title="profile.name">{{ profile.name }}</h1>
         <p class="title">{{ profile.title }}</p>
       </div>
-
-      <button class="info_more-btn" @click="isExpanded = !isExpanded" data-sidebar-btn>
-        <span>Show Contacts</span>
-        <i :class="['bi', isExpanded ? 'bi-chevron-up' : 'bi-chevron-down']"></i>
-      </button>
-    </div>
+      
+      </div>
 
     <div class="sidebar-info_more">
       <div class="separator"></div>
@@ -29,16 +24,22 @@
           <div class="contact-info">
             <p class="contact-title">{{ contact.label }}</p>
             
-            <a v-if="contact.type === 'link'" :href="contact.href" class="contact-link text-break">{{ contact.value }}</a>
-            <time v-else-if="contact.type === 'time'" :datetime="contact.datetime">{{ contact.value }}</time>
-            <address v-else-if="contact.type === 'address'">{{ contact.value }}</address>
+            <a v-if="contact.type === 'link'" :href="contact.href" class="contact-link text-break">
+              {{ contact.value }}
+            </a>
+            <time v-else-if="contact.type === 'time'" :datetime="contact.datetime">
+              {{ contact.value }}
+            </time>
+            <address v-else-if="contact.type === 'address'">
+              {{ contact.value }}
+            </address>
           </div>
         </li>
       </ul>
 
       <div class="separator"></div>
 
-      <ul class="social-list list-unstyled">
+      <ul class="social-list list-unstyled justify-content-center">
         <li v-for="social in socials" :key="social.name" class="social-item">
           <a :href="social.url" target="_blank" class="social-link">
             <i :class="['bi', social.icon]"></i>
@@ -46,15 +47,12 @@
         </li>
       </ul>
     </div>
-
   </aside>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import myAvatar from '../images/NguyenQuocHuy.jpg';
-
-const isExpanded = ref(false);
 
 const profile = ref({
   name: "Nguyễn Quốc Huy",
@@ -76,6 +74,7 @@ const socials = ref([
 </script>
 
 <style scoped>
+/* --- PHẦN CẤU TRÚC CHÍNH --- */
 .sidebar {
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
@@ -84,12 +83,10 @@ const socials = ref([
   box-shadow: var(--shadow-1);
   z-index: 1;
   margin-bottom: 15px;
-  max-height: 112px;
-  overflow: hidden;
+  max-height: max-content; 
+  overflow: visible;
   transition: var(--transition-2);
 }
-
-.sidebar.active { max-height: 405px; }
 
 .sidebar-info {
   position: relative;
@@ -106,27 +103,20 @@ const socials = ref([
   border: 1px solid var(--jet); 
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
   overflow: hidden; 
-  transition: all 0.3s ease-in-out;
+  flex-shrink: 0;
 }
 
 .avatar-box img {
   display: block;
+  width: 80px; 
+  height: auto;
   transition: transform 0.3s ease;
-  
-}
-
-.sidebar:hover .avatar-box img { transform: scale(1.05); }
-
-.sidebar:hover .avatar-box {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-  border-color: var(--orange-yellow-crayola); 
 }
 
 .info-content .name {
   color: var(--white-2);
   font-size: var(--fs-3);
   font-weight: var(--fw-500);
-  letter-spacing: -0.25px;
   margin-bottom: 10px;
 }
 
@@ -134,51 +124,15 @@ const socials = ref([
   color: var(--white-1);
   background: var(--onyx);
   font-size: var(--fs-8);
-  font-weight: var(--fw-300);
-  width: max-content;
   padding: 3px 12px;
   border-radius: 8px;
+  width: max-content;
 }
-
-.info_more-btn {
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  border-radius: 0 15px;
-  font-size: 13px;
-  color: var(--orange-yellow-crayola);
-  background: var(--border-gradient-onyx);
-  padding: 10px;
-  box-shadow: var(--shadow-2);
-  transition: var(--transition-1);
-  z-index: 1;
-}
-
-.info_more-btn::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  background: var(--bg-gradient-jet);
-  transition: var(--transition-1);
-  z-index: -1;
-}
-
-.info_more-btn:hover,
-.info_more-btn:focus { background: var(--bg-gradient-yellow-1); }
-.info_more-btn:hover::before,
-.info_more-btn:focus::before { background: var(--bg-gradient-yellow-2); }
-.info_more-btn span { display: none; }
 
 .sidebar-info_more {
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition-2);
-}
-
-.sidebar.active .sidebar-info_more {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
 }
 
 .separator {
@@ -195,15 +149,21 @@ const socials = ref([
 }
 
 .contact-item {
-  min-width: 100%;
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.contact-info {
-  max-width: calc(100% - 46px);
-  width: calc(100% - 46px);
+.icon-box {
+  color: var(--orange-yellow-crayola);
+  background: var(--border-gradient-onyx);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 16px;
 }
 
 .contact-title {
@@ -216,65 +176,62 @@ const socials = ref([
 .contact-info :is(.contact-link, time, address) {
   color: var(--white-2);
   font-size: var(--fs-7);
+  text-decoration: none;
 }
-
-.contact-info address { font-style: normal; }
 
 .social-list {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   gap: 15px;
-  padding-bottom: 4px;
-  padding-left: 7px;
 }
 
-.social-item .social-link {
+.social-link {
   color: var(--light-gray-70);
-  font-size: 24px;
-}
-.social-item .social-link:hover { color: var(--light-gray); }
-
-@media (min-width: 580px) {
-  .sidebar { max-height: 180px; margin-bottom: 30px; padding: 30px; }
-  .sidebar.active { max-height: 584px; }
-  .sidebar-info { gap: 25px; }
-  .avatar-box { border-radius: 30px; }
-  .avatar-box img { width: 120px; }
-  .info-content .name { margin-bottom: 15px; }
-  .info-content .title { padding: 5px 18px; }
-  .info_more-btn { top: -30px; right: -30px; padding: 10px 15px; }
-  .info_more-btn span { display: block; font-size: var(--fs-8); }
-  .info_more-btn .bi { display: none; }
-  .separator { margin: 32px 0; }
-  .contacts-list { gap: 20px; }
-  .contact-info { max-width: calc(100% - 64px); width: calc(100% - 64px); }
+  font-size: 20px;
+  transition: 0.3s;
 }
 
-@media (min-width: 768px) {
-  .contacts-list { grid-template-columns: 1fr 1fr; gap: 30px 15px; }
+.social-link:hover { color: var(--orange-yellow-crayola); }
+
+@media (max-width: 991px) {
+  .sidebar {
+    padding: 30px 15px;
+    max-height: max-content !important;
+  }
+
+  .sidebar-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .avatar-box {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 30px; 
+    margin-bottom: 15px;
+  }
+
+  .avatar-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+
+  .info-content .title {
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 1250px) {
   .sidebar {
     position: sticky;
     top: 60px;
-    max-height: max-content;
-    height: 100%;
-    margin-bottom: 0;
     padding-top: 60px;
-    z-index: 1;
   }
   .sidebar-info { flex-direction: column; }
   .avatar-box img { width: 150px; }
-  .info-content .name { white-space: nowrap; text-align: center; }
+  .info-content .name { text-align: center; white-space: nowrap; }
   .info-content .title { margin: auto; }
-  .info_more-btn { display: none; }
-  .sidebar-info_more { opacity: 1; visibility: visible; }
-  .contacts-list { grid-template-columns: 1fr; }
-  .contact-info :is(.contact-link) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .contact-info :is(.contact-link, time, address) { --fs-7: 14px; font-weight: var(--fw-300); }
-  .separator:last-of-type { margin: 15px 0; opacity: 0; }
   .social-list { justify-content: center; }
 }
 </style>

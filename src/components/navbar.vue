@@ -24,15 +24,12 @@
   position: absolute;
   top: 0;
   right: 0;
-  
   background: #1e1e21; 
   border-bottom: 1px solid #383838;
   border-left: 1px solid #383838;
   border-top: none;
   border-right: none;
-  
   border-radius: 0 20px 0 20px;
-  
   padding: 10px 30px;
   width: auto;
   min-width: max-content;
@@ -46,7 +43,7 @@
 }
 
 .nav-link {
-  color: #d6d6d6 !important;
+  color: #d6d6d6;
   text-decoration: none;
   font-size: 15px;
   padding: 10px 0;
@@ -54,13 +51,53 @@
 }
 
 .nav-link:hover {
-  color: #fafafa !important;
+  color: #fafafa;
 }
 
+.router-link-active,
 .router-link-exact-active {
-  color: #ffdb70 !important;
+  color: #ffdb70 !important; 
+  font-weight: 600;
 }
-.nav-link:active {
-  color: #ffdb70 !important;
+
+@media (max-width: 991px) {
+  .navbar {
+    position: fixed !important;
+    bottom: 0 !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    min-width: 100% !important; 
+    margin: 0 !important;
+    border-radius: 20px 20px 0 0 !important;
+    z-index: 9999 !important; 
+    background: rgba(30, 30, 33, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 15px 0 !important;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+  }
+
+  .navbar-nav {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important; 
+    justify-content: space-evenly !important;
+    gap: 0 !important;
+  }
+
+  .nav-link {
+    color: #d6d6d6;
+    font-size: 13px !important; 
+    font-weight: 500;
+    padding: 10px !important;
+    white-space: nowrap !important;
+    display: block;
+  }
+
+  .navbar-nav .nav-item .router-link-active,
+  .navbar-nav .nav-item .router-link-exact-active {
+    color: #ffdb70 !important;
+  }
 }
 </style>

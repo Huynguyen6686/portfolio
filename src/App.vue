@@ -32,16 +32,19 @@ import Sidebar from './components/sidebar.vue';
 </template>
 
 <style>
+/* HIỆU ỨNG CHUYỂN TRANG */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.1s ease;
 }
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
 }
+
 body {
   background-color: #121212;
   color: white;
 }
+
 article {
   background: var(--eerie-black-2); 
   border: 1px solid var(--jet);    
@@ -52,12 +55,16 @@ article {
   width: 100% !important;       
   min-height: 100%;               
 }
-@media (max-width: 768px) {
+
+@media (max-width: 991px) {
   article {
-    padding: 15px;
+    padding: 15px; 
   }
-}
-article {
-  width: 100% !important;
+  
+  .main-content {
+    padding-bottom: 90px !important; 
+    overflow: visible !important; 
+    transform: none !important;
+  }
 }
 </style>
