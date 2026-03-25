@@ -77,6 +77,12 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const experiences = ref([
+{
+    title: "Website Đặt Vé Xem Phim",
+    time: "02/2026 - 03/2025",
+    description: "• Thiết kế và phát triển hệ thống đặt vé xem phim hoàn chỉnh, tập trung vào xử lý logic nghiệp vụ Back-end.<br><br>• Xây dựng hệ thống RESTful API chuẩn hóa để kết nối mượt mà giữa Front-end và cơ sở dữ liệu.<br><br>• Triển khai các chức năng cốt lõi: quản lý phim, suất chiếu, ghế ngồi, đặt vé, khuyến mãi và thanh toán hóa đơn.<br><br>• Thiết kế cơ sở dữ liệu trên SQL Server, tối ưu hóa truy vấn và theo dõi trạng thái vé, lịch chiếu theo thời gian thực."
+}
+,
      {
         title: "Blog Web",
         time: "11/2025 - 1/2026",
