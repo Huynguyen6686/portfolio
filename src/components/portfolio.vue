@@ -72,7 +72,7 @@ const projects = ref([
     title: "Website đặt vé xem phim",
     category: "Web Development",
     image:  WebgDatVeXemPhim,
-    link: "https://github.com/Huynguyen6686/BlogWebsite"
+    link: "https://github.com/Huynguyen6686/DuAnPhim"
   },
 
 ]);
