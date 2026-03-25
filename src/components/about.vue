@@ -61,6 +61,10 @@ const coreSkills = ref([
 ]);
 
 const keyProjects = ref([
+ { 
+    name: "Website đặt vé xem phim", 
+    description: "Nền tảng đặt vé xem phim trực tuyến với chức năng chọn phim, suất chiếu, ghế ngồi, thanh toán và quản trị rạp." 
+  },
      { 
     name: "Blog App", 
     description: "Xây dựng nền tảng tương tác trực tuyến sử dụng Vue.js và MySQL. Tối ưu hóa cấu trúc dữ liệu và API để xử lý mượt mà các tính năng cốt lõi như đăng bài, bình luận, thả tim, đảm bảo tốc độ phản hồi nhanh và tính ổn định của hệ thống." 

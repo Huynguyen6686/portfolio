@@ -48,6 +48,8 @@
 import { ref, computed } from 'vue';
 import blogAppImg from '../images/BlogApp.jpg';
 import WebgBanGiayImg from '../images/WebBanGiay.jpg';
+import WebgDatVeXemPhim from '../images/WebDatVeXemPhim.jpg';
+
 
 const selectedCategory = ref('Tất cả');
 
@@ -64,6 +66,12 @@ const projects = ref([
     title: "BlogWebsite",
     category: "Web Development",
     image:  blogAppImg,
+    link: "https://github.com/Huynguyen6686/BlogWebsite"
+  },
+   {
+    title: "Website đặt vé xem phim",
+    category: "Web Development",
+    image:  WebgDatVeXemPhim,
     link: "https://github.com/Huynguyen6686/BlogWebsite"
   },
 
